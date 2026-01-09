@@ -162,3 +162,37 @@ Ans = <main>: The main content of the page, Only one <main> per page.
       <section>: A part of the page that groups the related content.
       <article>: A block of content that can stand alone.
       <aside>: Extra content on the side.
+
+## CSS ##
+
+1. Difference between relative, absolute, fixed, and sticky positioning with example?
+Ans = Relative: The element stays in the normal document flow, but you can shift it using(top, left, right or bottom).
+      Absolute: It removes from the normal flow, and positioned relative to nearest position ancestor.
+      Fixed: Position relative to the viewport, Stays fixed on the screen even when scrolling.
+      Sticky: Acts relative untill a scroll threshold, then behave like fixed.
+
+2. What is the difference between inline, internal, and external CSS?
+Ans = Inline CSS: Written directly inside the html element using the style attribute, affects only that single element,
+      It is hard to maintain in large projects Example = <p style="color:red;">Hello</p>
+
+      Internal CSS: Written inside the <style> tag in the <head> of the html file, Affects only that single html page.
+      It is not reusable accross multiple pages.
+      Example = <style> p{color : red;}  </style>
+
+      External CSS: Written inside the seperate .css file and linked with the html using the <link> tag, Can style multiple
+      pages at once, Best for performance and maintainablity. 
+      Example = <link rel="stylesheet" href="style.css">
+
+3. Difference between relative units and absolute units (%, em, rem, vw, vh, px)?
+Ans = Relative Units: It is responsive units means, they scale with the context(like parent size, root fontsize or viewport).
+      Example of units are:
+   a) %(percentage): Relative to parent element.
+      Example = div { width: 50%; } /* Half of parent’s width */
+   b) em: Relative to the parent font size.
+      Example = p { font-size: 2em; } /* Twice parent’s font size */
+   c) rem: Relative to the root(html) font size.
+      Example = p { font-size: 1.5rem; } /* 1.5 × root font size */
+   d) vw: Relative to the width of the browser window.
+      Example = div { width: 50vw; } /* 50% of viewport width */
+   e) vh: Relative to the height of the browser window.
+      Example = div { width: 100vh; } /* Full viewport height */
