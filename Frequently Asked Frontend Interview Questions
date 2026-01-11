@@ -7,7 +7,7 @@ Ans = Semantic elements clearly describe their meaning and purpose to both the b
 
 2. Difference between block, inline, and inline-block elements?
 Ans = Block: Takes full width, starts on a new line. Example: <div>, <p>.
-      Inline: Fits only the content, doesn’t start a new line. Example: <span>, <a>.
+      Inline: Take as much as width needed for their content, doesn’t start from a new line. Example: <span>, <a>.
       Inline-block: Behaves like inline but allows setting width/height. Example: <img>.
 
 3. What is the difference between <div> and <span>?
@@ -492,11 +492,89 @@ Ans = Arrow Function: It was introduced in ES6. It was the shorter syntax to wri
       Have their own argument object.
 
 14.Difference between for...in and for...of loops?
-Ans = 
+Ans = for...in: Iterates over the keys (property names) of an object.
+      Works on: Objects (and arrays, but not recommended).
 
+      Example: 
+      const obj = {name : "bob", age : 30};
+      for(let key in obj){console.log(key, obj[key]);}
 
+      for...of: Iterates over the values of an iterable (arrays, strings, Maps, Sets, etc.).
+      Works on: Iterables (not plain objects unless you use Object.values() or Object.entries()).
 
+      Example:
+      const arr = ["a", "b", "c"];
+      for(let value of arr){console.log(value);}
 
+15. What is the difference between DOM and BOM?
+Ans = DOM (Document Object Model): A programming interface for HTML documents.
+      Purpose: Represents the structure and content of a webpage as a tree of nodes.
+      Focus: Deals with document elements (tags, attributes, text).
+
+      BOM (Browser Object Model): A programming interface for the browser itself.
+      Purpose: Represents the browser environment outside the page content.
+      Focus: Deals with browser features (window, history, location, navigator, screen).
+
+16. Difference between innerHTML and innerText?
+Ans = innerHTML: Retrun or set the HTML content inside an element — including the tags and the text between them.
+      innerText: Return or set the visible text inside an element, ignoring the html tag.
+
+17. What is the difference between event delegation and event handling?
+Ans = Event Handling: Attaching an event listener directly to the element you want to respond to.
+      How it works: The listener is bound to that specific element.
+      Use case: When you only need to handle events on a few known elements.
+
+      Event Delegation: Attaching a single event listener to a parent element and using "event bubbling" to detect which child triggered the event.
+      How it works: Instead of adding listeners to every <li>, you add one listener to the <ul> and use "event.target" to figure out which child triggered it.
+      Use case: Efficient when handling events on many dynamic child elements (like items in a list).
+
+18. Difference between ES5 and ES6 features?
+Ans = ES5:
+      var only
+      Normal function
+      Modules are not supported
+      Async handling are done by the "Callbacks"
+      String are written with "Concatenation +"
+
+      ES6:
+      Introduce let and const
+      Arrow Function
+      Modules are introduced
+      Async handling are done by the "Promises"
+      Introduce template literal
+
+19. What are higher-order functions in JavaScript?
+Ans = A function is considered higher‑order if it does one (or both) of the following:
+       i  Takes another function as input (argument).
+       ii Returns a new function as output.
+      This is possible because in JavaScript, functions are first‑class citizens — meaning they can be stored in variables, passed around, 
+      and returned just like numbers or strings.
+
+20. What is the difference between JSON and JavaScript objects?
+Ans = JSON(JavaScript Object Notation): A text-based data format Mostly used when sending/receiving the data between server and browser.
+      Keys and value must be in double quotes.
+      Cannot store function and methods.      
+      Example {"name" : "bob", "role" : "developer"}
+
+      JavaScript Objects: It is a data Structure in JavaScript. Used to store the key-value pair.
+      Keys can be of any data type and write without the quotes.
+      Values can be strings, numbers, arrays, other objects, or even functions.
+      Exmaple: 
+      const person = {
+        name: "Varsha",
+        age: 25,
+        skills: ["JavaScript", "React"],
+        greet: function() { console.log("Hello!"); }
+      };
+
+21. Difference between mutable and immutable data in JS?
+Ans = Mutable Data: Data that can be changed/modified after it is created.
+      Examples in JS: Objects, Arrays
+      Behavior: If you change a property or element, the original data structure is updated.
+
+      Immutable Data: Data that cannot be changed once created. Any modification creates a new copy.
+      Examples: Primitive types → string, number, boolean, null, undefined, symbol, bigint
+      Behavior: If you try to change them, a new value is created instead of modifying the original.
 
 
 
