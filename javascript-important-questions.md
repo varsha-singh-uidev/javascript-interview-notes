@@ -421,3 +421,163 @@ A:  Arity of a Function
 
 Example = function add(a,b){ console.log(a+b); }
 console.log(add.length);
+
+Q: What is a named function expression? 
+A: A function expression with a name: 
+const fn = function named() {};
+
+Q: Can arrow function return objects directly?
+A: yes, Arrow function can return object directly, but you must wrap the object in parantheses. Note-> without the parantheses, JavaScript interprests {} as a function 
+   body, not the object literal.
+   Exmaple: const greet = () => {name : "bob"};
+            console.log(greet()); //undefined
+       //correct way to return the object
+       const greet = () => {name : "bob"};
+       console.log(greet());
+
+Q: Do arrow functions have their own super?
+A: No, Arrow functions do not have their own super (just like they don’t have their own this, arguments, or new.target). Instead, they lexically inherit super from their 
+   enclosing scope.
+   Example: 
+   class Parent{
+    greet(){console.log("Hello parent")}
+   }
+   class Child extends Parent{
+     constructor(){
+         super(); // call the parent class method;
+         this.sayHi = () => {
+             super.greet(); //again call parent class method
+             console.log("Hi from the child");
+         }
+      }
+   }
+  const c = new Child();
+  c.sayHi(); //this thing work without an error because the constructor has super.
+
+Q: Can arrow functions be recursive?
+A: Yes, arrow functions can be recursive, but since they are anonymous by default, recursion requires either:
+ i) Assigning them to a variable, or ii)Using a Named Function Expression.
+Exmaple: 
+const fact = (num) => {
+    if(num<=1) {return 1;}
+    return num * fact(num-1);
+}
+console.log(fact(5)); //120
+
+Q: What is the Arrow function return rules?
+A: With parentheses () → implicit return, The expression inside is returned automatically, no need for the return keyword.
+   Example: const square = (x) => (x*x);
+            console.log(square(5)); //25
+
+   With curly braces {} → explicit return required, Curly braces create a block body so you must use return to send back     a value.
+   Example: const square = (x) => {return x * x;}
+            console.log(square(5)) //25
+
+   Special case: returning objects, Wrap the object in parentheses (), otherwise {} is treated as a block body.
+   Example: const obj = () => ({name : "bob";})
+            console.log(obj());
+
+Q: Do they have a prototype?
+A: No, the prototype in js is a special property of function that enables inheritance when those functions are used as a constructor. Arrow function do not have their own "prototype" because they are not constructor and cannot be invoked with the new.
+
+Q: Can arrow functions be used in event handlers?
+A: Yes, arrow function can be used in event handlers. However "this" inside the arrow function does not refer to the element that triggered the event. Instead the arrow function inherit "this" lexically from their surrounding scope. 
+Example: <button class="btn">Click</buton>
+let btn = document.querySelector(".btn");
+btn.addEventListener("click", function(){
+    console.log("Normall function");
+    console.log(this); //<button class="btn">Click</buton>
+})
+btn.addEventListener("click", () => {
+    console.log("Arrow function");
+    console.log(this); //window object
+})
+
+ Q: Do arrow functions support method shorthand?
+ A: No, Arrow functions do not support method shorthand syntax in object or classes, arrow function must be assigned as a  property not the shorthand. 
+ Method shorthand: is a special syntax that is used for defining the methods inside objects/classes without the function keyword.
+ Example:
+ //Normall function 
+ const obj = {
+ greet(){ console.log("hello") } //method shorthand
+ }
+ // Arrow function 
+ const obj = {
+ greet : () => { console.log("Hrllo"); } // arrow function assigned as a property
+ }
+ 
+ Q: What is a rest parameter?
+ A: The rest parameter(...) in Js allows a function to accept an indefinite numbers of arguments in the form of array. if we are using the normall parameter and rest parameter than the rest paramter must be the last parameter. They replace the older arguments object with a cleaner, moder syntax. they collect the arguments in the form of an array.
+Example: 
+function fun(a, b, ...rest){
+  console.log(a) //1
+  console.log(b) //2
+  console.log(rest) //[3, 4, 5]
+}
+fun(1,2,3,4,5);
+
+Q: What is the difference between arguments and rest parameters?
+A: arguments object
+An array‑like object available inside all regular functions.
+Contains all arguments passed to the function, regardless of how many parameters are declared.
+Not available in arrow functions.
+Does not support array methods directly (needs conversion to a real array).
+
+Rest parameters (...)
+A modern ES6 feature that collects remaining arguments into a real array.
+Declared explicitly in the function signature (function f(...args)).
+Works in both regular and arrow functions.
+Supports array methods directly (map, filter, reduce, etc.).
+
+Q: What is function composition? 
+A: Function composition in JavaScript means combining multiple small functions to build a bigger function, where the output of one function becomes the input of the next.
+Example: // without the composition
+function square(num){ return num * num;}
+function add(num){ return num + num;}
+
+const result = square(add(5));
+console.log(result);
+
+Exmaple: // With Composition
+function compose(f, g){
+    return function(num){
+        return f(g(num));
+    }
+}
+function square(num){ return num * num;}
+function add(num){ return num + num;}
+const result = compose(square, add);
+console.log(result(5));
+
+Q: What is function Constructor? 
+A: A function constructor in JavaScript is a way to dynamically create new function. Unlike normall function decleration or expression, the function constructor take string as a argument and always creates the function that executes in the global scope.
+Exmaple: const fun = new Function("a", "b", "return a + b");
+console.log(fun(2,1));
+
+Why We Don’t Commonly Use the Function Constructor: 
+
+Global Scope Only: 
+Functions created with new Function() don’t close over local variables.
+They always run in the global scope, which breaks encapsulation and makes code harder to reason about.
+
+Security Risks:
+Since the function body is passed as a string, it’s similar to eval().
+If the string comes from user input, it can lead to code injection attacks.
+
+Performance Issues:
+The JavaScript engine has to parse the string at runtime to create the function.
+This is slower and less optimized compared to normal function declarations or expressions.
+
+Readability & Maintainability:
+Writing function bodies as strings makes code harder to read, debug, and maintain.
+IDEs and linters can’t easily catch errors inside string‑based code.
+
+
+
+
+
+
+
+
+
+   
