@@ -145,3 +145,105 @@ countFreq("hello");
 // **Time Complexity:** O(n).
 // **Space Complexity:** O(k), where k = unique character.
 
+
+
+// Q7. Find the longest word in a string.
+function longestWord(str){
+    let newStr = str.split(" ");
+    let maxWord = "";
+    for(let word of newStr){
+        if(word.length > maxWord.length){
+            maxWord = word;
+        }
+    }
+    console.log(maxWord);
+}
+longestWord("Hello everyone, how are you?");
+
+// * Algorithm:
+//   - Split the string into words.
+//   - Track the longest word by comparing lengths.
+//   - Print the longest word.
+// * Time Complexity:  O(n) → iterate through all words once.
+// * Space Complexity: O(k) → store words in an array (k = number of words).
+
+
+
+// Q8. Check if two strings are anagrams
+function checkAnagram(word1, word2){
+    let word11 = word1.split("").sort().join("");
+    let word22 = word2.split("").sort().join("");
+    if(word11 === word22){
+        console.log("Anagram");
+    }else{
+        console.log("Not a Anagram");
+    }
+}
+checkAnagram("hello", "world");
+checkAnagram("silent", "listen");
+
+// * Algorithm:
+//  - Split both strings into characters.
+//  - Sort and join them back.
+//  - Compare sorted results → if equal → Anagram.
+// * Time Complexity:  O(n log n) → sorting step.
+// * Space Complexity: O(n) → store sorted arrays/strings.
+
+
+
+// Q9. Count words in a string
+function countWord(str){
+    let newStr = str.trim().split(" ").length;
+    console.log(newStr);
+}
+countWord("Hello everyone how are you?");
+
+// * Algorithm:
+//  - Trim leading/trailing spaces.
+//  - Split the string by spaces into an array.
+//  - Return the array length as the word count.
+//  * Time Complexity:  O(n) → iterate through characters once.
+//  * Space Complexity: O(k) → store words in an array (k = number of words).
+
+
+
+// Q10. Capitalize first letter of each word
+function capitalize(str){
+    let newStr = str.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
+    console.log(newStr);
+    
+}
+capitalize("Hello everyone how are you?");
+
+// * Algorithm:
+//  - Trim spaces.
+//  - Split by spaces into words.
+//  - Return array length.
+//  * Time Complexity:  O(n) → scan characters once.
+//  * Space Complexity: O(k) → store words (k = number of words).
+
+
+
+// Q11. Find duplicate characters
+function findDuplicate(str){
+    let obj = {};
+    let arr = [];
+    for(let i = 0; i < str.length; i++){
+        obj[str[i]] = (obj[str[i]] || 0) +1;
+    }
+    for(let key in obj){
+        if(obj[key] > 1){
+            arr.push(key);
+        }
+    }
+    console.log(arr);
+}
+findDuplicate("DDuplliccateea");
+
+// * Algorithm:
+//  - Create a frequency map of characters.
+//  - Iterate through the map.
+//  - Collect characters with count > 1.
+//  - Print the duplicates.
+//  * Time Complexity:  O(n) → single pass to count + check.
+//  * Space Complexity: O(k) → store unique characters (k = distinct chars).
