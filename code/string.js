@@ -247,3 +247,70 @@ findDuplicate("DDuplliccateea");
 //  - Print the duplicates.
 //  * Time Complexity:  O(n) → single pass to count + check.
 //  * Space Complexity: O(k) → store unique characters (k = distinct chars).
+
+
+
+//Q12.  Remove duplicate characters
+function removeDuplicate(str){
+    let arr = [];
+    for(let i = 0; i < str.length; i++){
+        if(!arr.includes(str[i])){
+            arr.push(str[i]);
+        }
+    }
+    console.log(arr.join(""));
+}
+removeDuplicate("Voowwel");
+
+// * Algorithm:
+// * - Iterate through characters.
+// * - Add only if not already included.
+// * - Join and print unique characters.
+// * Time Complexity:  O(n²) → due to includes() check.
+// * Space Complexity: O(n) → store unique characters.
+
+
+
+//Q13. Check if string contains only digits
+function checkDigit(str){
+    if(/^[0-9]+$/.test(str)){
+console.log("String only contain the digit.");
+    }
+    else{
+console.log("String contain extra character apart from the digit.");
+    }
+}
+checkDigit("1234");
+
+//  * Algorithm:
+//  - Use regex pattern /^[0-9]+$/ to match entire string.
+//  - If match succeeds → string has only digits.
+//  - Else → contains non-digit characters.
+//  * Time Complexity:  O(n) → regex scans all characters once.
+//  * Space Complexity: O(1) → constant extra space.
+
+
+
+//Q14. Find number of occurrences of a substring
+function findCount(str, sub){
+    let count = 0;
+    let windowSize = sub.length;
+    for(let i = 0; i <= str.length - windowSize; i++){
+        let size = str.slice(i, i+windowSize);
+        if(sub === size){
+            count++;
+        }
+    }
+    console.log(`Occurence of "${sub}" is ${count}`);
+}
+findCount("hellohello", "lo");
+
+// * Algorithm:
+//  - Determine the window size equal to the substring length.
+//  - Slide the window across the main string one character at a time.
+//  - Compare each window slice with the substring.
+//  - Increment count if they match.
+//  - Print the total count.
+//  * Time Complexity:  O(n * m) → n = length of main string, m = length of substring.
+//  * Space Complexity: O(1) → Constant extra space.
+
