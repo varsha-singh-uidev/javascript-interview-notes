@@ -314,3 +314,132 @@ findCount("hellohello", "lo");
 //  * Time Complexity:  O(n * m) → n = length of main string, m = length of substring.
 //  * Space Complexity: O(1) → Constant extra space.
 
+
+
+//Q15. Rotate a string to the left by k position
+function rotateLeft(str, k){
+    let n = str.length;
+    if(k > n){
+        k = k % n;
+    }
+    let a = str.slice(0, k);
+    let b = str.slice(k);
+    console.log(b + a);
+}
+rotateLeft("abcdef", 2); //"cdefab"
+
+//  * Algorithm:
+//  - If k > string length, reduce k using modulo (k % n).
+//  - Split the string into two parts:
+//     - First k characters.
+//     - Remaining characters.
+//  - Concatenate the second part with the first part.
+//  * Time Complexity:  O(n) → slicing and concatenation.
+//  * Space Complexity: O(n) → temporary substrings created.
+
+
+
+//Q16. Rotate a string to the right by k position.
+function rotateRight(str, k){
+    let n = str.length;
+    if(k > n){
+        k = k % n;
+    }
+    let a = str.slice(0,n-k);
+    let b = str.slice(n-k);
+    console.log(b + a);
+}
+rotateRight("abcdef", 2); //"efabcd"
+
+//  * Algorithm:
+//  - If k > string length, reduce k using modulo (k % n).
+//  - Split the string into two parts:
+//     - First (n - k) characters.
+//     - Last k characters.
+//  - Concatenate the second part with the first part.
+//  * Time Complexity:  O(n) → slicing and concatenation.
+//  * Space Complexity: O(n) → temporary substrings created.
+
+
+
+//Q17. Check if one string is a rotation of another.
+function checkRotation(str1, str2){
+    let newStr = str1 + str1;
+    let flag = false;
+    let Wsize = str2.length;
+    for(let i=0; i<=(newStr.length-Wsize); i++){
+        let size = newStr.slice(i, i+Wsize);
+        if(size === str2){
+            flag = true;
+            break;
+        }
+    }
+    if(flag){
+        console.log("Yes, string2 is the rotation of string 1");
+    }else{
+      console.log("No, string2 is not the rotation of string 1"); 
+    }
+}
+checkRotation("waterbottle", "erbottlewat"); //yes
+checkRotation("hello", "lehlo"); //no
+
+// * Core Idea:
+//   - If str2 is a rotation of str1, then str2 will always appear as a substring
+//      inside str1 + str1 (concatenating the string with itself creates a "rotation wheel").
+//   - Works for both left and right rotations since concatenation covers all cases.
+   
+//  * Algorithm:
+//  * 1. Concatenate str1 with itself → newStr = str1 + str1.
+//  * 2. Slide a window of size equal to str2 across newStr.
+//  * 3. If any window matches str2, then str2 is a rotation of str1.
+//  * 4. Otherwise, it is not a rotation.
+//  * Time Complexity:  O(n) → substring search across doubled string.
+//  * Space Complexity: O(n) → storing str1 + str1.
+
+
+
+// Find longest substring without repeating characters.
+function longestSubString(str){
+    let windowSize = 0;
+    let left = 0;
+    let seen = new Set();
+    for(let right = 0; right < str.length; right++){
+        let char = str[right];
+        while(seen.has(char)){
+            seen.delete(str[left]);
+            left++;
+        }
+        seen.add(char);
+        windowSize = Math.max(windowSize, right-left+1);
+    }
+    console.log(`Longest Substring length: `, windowSize);
+}
+longestSubString("abcabcbb"); //3
+longestSubString("bbbbb"); //1
+
+//  * Core Idea:
+//  - Use a "sliding window" technique with two pointers (left and right).
+//  - Expand the window by moving the right pointer forward.
+//  - If a duplicate character is found, shrink the window from the left until the duplicate is removed.
+//  - At each step, update the maximum window size.
+//  * 
+//  * Algorithm:
+//  1. Initialize:
+//  *    - windowSize = 0 (stores maximum length found).
+//  *    - left = 0 (start of the window).
+//  *    - seen = Set() (tracks unique characters in the current window).
+//  *
+//  2. Iterate with right pointer across the string:
+//  *    - If str[right] is not in seen → add it to the set.
+//  *    - If str[right] is already in seen → remove characters from the left
+//  *      until the duplicate is gone, then add str[right].
+//  *
+//  3. Update windowSize = max(windowSize, right - left + 1).
+//  *
+//  4. Return windowSize as the length of the longest substring
+//  *    without repeating characters.
+//  *
+//  * Time Complexity:  O(n) → each character is processed at most twice.
+//  * Space Complexity: O(n) → Set stores unique characters in the current window.
+
+
