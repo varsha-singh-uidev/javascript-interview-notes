@@ -768,3 +768,62 @@ A: O(1)
 Q: What is the time complexity of splice()? 
 A: O(n) in worst case.
 
+## Object Related Question ##
+
+Q: How do you check if a property exists?
+A: let obj = {name : "varsha", age : 20}
+   console.log("name" in obj);
+
+Q: What is Object.keys(obj)? 
+A: Returns an array of keys. 
+
+Q: What is Object.values(obj)? 
+A: Returns an array of values. 
+
+Q: What is Object.entries(obj)? 
+A: Returns an array of key-value pairs.
+
+Q: Can object keys be numbers? 
+A: Yes, but they are stored as strings.
+
+Q: What is this inside an object method? 
+A: Refers to the object itself.
+
+Q: What does Object.assign() do? 
+A: Copies properties from one or more objects to a target object.
+Syntax: Object.assign(target, ...sources)
+Example:
+let obj = { name: "Varsha", age: 25 };
+let obj1 = Object.assign({}, obj);
+obj1.name = "Singh";
+console.log(obj);  // { name: "Varsha", age: 25 }
+console.log(obj1); // { name: "Singh", age: 25 }
+
+Q: What is Object.freeze()? 
+A: Makes an object immutable. You can not add, remove and update the property in the obj.
+
+Q: What is Object.seal()? 
+A: Prevents adding/removing properties but allows editing existing ones.
+
+Q: What is a constructor function? 
+A: A constructor function is a special type of function in js. That is used to create multiple similar objects with shared structure. It is called with the "new" keyword, they create a new object bind 'this' to that object, and return it automatically. Without the 'new' the function behave like a normall function. They are the foundation of object-oriented patterns in js.
+Example: 
+function User(name){
+    this.name = name;
+}
+let u = new User("bob");
+u.age = 20; //add property seperately
+console.log(u); //User { name: 'bob', age: 20 }
+
+Q: What does instanceof check? 
+A: instanceof checks whether an object was created by a particular constructor.
+Exmaple console.log(u instanceof User); //true
+
+Q: What is hasOwnProperty()? 
+A: Checks if a property exists directly on the object (not inherited). 
+Exmaple: console.log(u.hasOwnProperty("age")); //true
+console.log(u.hasOwnProperty("toString")); //false (inherited fromObject prototype)
+
+
+
+
