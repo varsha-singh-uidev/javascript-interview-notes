@@ -849,7 +849,7 @@ Ans = Difference Between React.Fragment and a div Wrapper
       div: Best when you need a real container element for styling, layout, or semantic structure.
 
 9. What is the difference between React virtual DOM and real DOM?
-Ans = Difference Between Virtual DOM and Real DOM
+Ans = Difference Between Virtual DOM and Real DOM are:
 
       Definition
       Real DOM: The actual Document Object Model rendered and managed by the browser.
@@ -874,3 +874,104 @@ Ans = Difference Between Virtual DOM and Real DOM
       Memory Usage
       Real DOM: No extra memory overhead beyond the actual DOM tree.
       Virtual DOM: Requires additional memory to maintain the virtual copy.
+
+10. Difference between Context API and Redux?
+Ans = Difference between Context API and Redux are:
+
+      Type
+      Context API → Built‑in React feature.
+      Redux → External library for state management.
+
+      Setup Complexity
+      Context API → Minimal setup (createContext, Provider, useContext).
+      Redux → More boilerplate (Store, Actions, Reducers, Middleware).
+
+      Best Use Cases
+      Context API → Avoiding prop drilling, sharing simple global state (theme, auth, language).
+      Redux → Large apps with complex state changes, multiple interactions, and async logic.
+
+      State Management
+      Context API → Provides global context but no strict structure.
+      Redux → Centralized store with predictable state transitions via reducers.
+
+      Performance
+      Context API → Can cause unnecessary re‑renders if many components consume the same context.
+      Redux → Optimized with reducers and middleware; better for large‑scale performance.
+
+      Debugging Tools
+      Context API → Limited (React DevTools only).
+      Redux → Powerful Redux DevTools (time‑travel debugging, state inspection).
+
+      Middleware Support
+      Context API → Not available.
+      Redux → Supports middleware (Redux Thunk, Saga) for async operations.
+
+      Learning Curve
+      Context API → Easy to learn, minimal boilerplate.
+      Redux → Steeper learning curve, requires understanding of actions/reducers.
+
+      Community & Ecosystem
+      Context API → Smaller, React‑only.
+      Redux → Large ecosystem with plugins, middleware, and integrations.
+
+11. Difference between lazy loading and code splitting?
+Ans =  Difference between lazy loading and code splitting are:
+
+      Purpose
+      Lazy Loading → Delays loading until needed.(load pieces only when needed.)
+      Code Splitting → Divides code into smaller bundles.(cutting your app into smaller pieces.)
+
+      Focus
+      Lazy Loading → Focuses on when resources are loaded.
+      Code Splitting → Focuses on how resources are organized and delivered.
+
+      Implementation
+      Lazy Loading → Often implemented with dynamic imports (import()), React’s React.lazy, or image/data loading strategies.
+      Code Splitting → Achieved using bundlers like Webpack, Rollup, or Parcel.
+
+      Performance Benefit
+      Lazy Loading → Reduces initial load time by skipping unused parts.
+      Code Splitting → Prevents one giant bundle, making downloads smaller and faster.
+
+      Relationship
+      Lazy Loading → Usually relies on code splitting under the hood (because you need separate chunks to load later).
+      Code Splitting → Can exist without lazy loading (just splitting bundles but still loading them all upfront).
+
+      Use Case
+      Lazy Loading → Best for rarely used features (admin panel, settings page, large images).
+      Code Splitting → Best for structuring large apps into manageable chunks.
+
+12. What is the difference between React Router v5 and v6?
+Ans = Differences Between React Router v5 and v6
+
+      Route Matching
+      v5 → Uses <Switch> to render the first matching route.
+      v6 → Uses <Routes> which always matches exactly one route and is more predictable.
+
+      Route Declaration
+      v5 → <Route path="/home" component={Home} />
+      v6 → <Route path="/home" element={<Home />} /> (uses element instead of component).
+
+      Nested Routes
+      v5 → More manual setup; often requires multiple <Route> definitions.
+      v6 → Built‑in support for nested routes with cleaner syntax.
+
+      Hooks
+      v5 → Limited hooks (useHistory, useLocation).
+      v6 → Modern hooks (useNavigate, useParams, useRoutes) that simplify navigation and route handling.
+
+      Redirects
+      v5 → Uses <Redirect> component.
+      v6 → Redirects are handled with <Navigate> element.
+
+      Bundle Size & Performance
+      v5 → Larger and less optimized.
+      v6 → Smaller, faster, and optimized for modern React.
+
+      Default Behavior
+      v5 → Routes are matched inclusively (multiple routes can match).
+      v6 → Routes are matched exclusively (only one route matches).
+
+      Upgrade Path
+      v5 → Widely used but now legacy.
+      v6 → Actively maintained, recommended for new projects, with a compatibility package for gradual upgrades
